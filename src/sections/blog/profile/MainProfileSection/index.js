@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import {Grid, Stack, Table, Typography} from "@mui/joy";
 import Box from "@mui/joy/Box";
-import ProfileImage from '../../../../assets/profile-image.jpg'
+import ProfileImage from '../../../../../public/waffle.png'
 import {TableBody, TableCell, TableRow} from "@mui/material";
 
 
@@ -17,6 +17,7 @@ const MainProfileSection = () => {
           <Stack spacing={1}>
             <Typography level="title-lg">길거리와플</Typography>
             <Typography>margotscool@gmail.com</Typography>
+            <Typography>와플을 좋아함</Typography>
           </Stack>
         </Grid>
       </Grid>

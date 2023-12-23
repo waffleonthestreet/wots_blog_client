@@ -44,7 +44,7 @@ export default ArticleCard;
 import React from 'react';
 import PropTypes from 'prop-types'
 // import ArticleThumbnailImage from '../../../../assets/article-item.jpg'
-import ArticleThumbnailImage from '../../../../../public/OktoberfestPattern7.jpg'
+import ArticleThumbnailImage from '../../../../../public/FreshOranges.jpg'
 import { styled } from '@mui/system';
 import {lineColor} from "../../../../config";
 import {Typography} from "@mui/joy";
