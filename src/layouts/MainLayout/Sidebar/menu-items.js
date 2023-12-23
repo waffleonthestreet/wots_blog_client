@@ -37,6 +37,18 @@ const menuItems = {
           icon: icons.LocalGroceryStoreIcon,
           children: [
             {
+              id: '1',
+              title: "CS",
+              type: 'item',
+              url: '/category/1/articles',
+            },
+            {
+              id: '2',
+              title: "Programming",
+              type: 'item',
+              url: '/category/2/articles',
+            },
+            {
               id: '3',
               title: "Database",
               type: 'item',
@@ -44,15 +56,9 @@ const menuItems = {
             },
             {
               id: '4',
-              title: "Programming",
-              type: 'item',
-              url: '/category/4/articles',
-            },
-            {
-              id: '5',
               title: "DevOps",
               type: 'item',
-              url: '/category/5/articles',
+              url: '/category/4/articles',
             },
           ]
         }

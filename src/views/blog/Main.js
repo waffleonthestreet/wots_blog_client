@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {Box, Stack} from "@mui/material";
 import {drawerWidth, headerHeight, outletPadding} from "../../config";
 import NewestArticles from "../../sections/blog/main/NewestArticles";
 import PopularArticles from "../../sections/blog/main/PopularArticles";
+import axios from "../../utils/axios";
 
 const Main = () => {
+
   return (
     <>
       <Box sx={{width: "100%", height: "5px", backgroundColor: "black"}}/>

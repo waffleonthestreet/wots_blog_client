@@ -6,3 +6,5 @@ export const outletPaddingMd = 50;
 export const outletPaddingXl = 300;
 export const lineColor = "rgba(0, 0, 0, 0.12)";
 export const primaryColor = '#fc4f00'
+
+export const pageSize  = 3;

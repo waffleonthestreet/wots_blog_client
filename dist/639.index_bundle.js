@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[639],{2639:(e,n,t)=>{t.r(n),t.d(n,{default:()=>a});var r=t(7294);const a=function(){return r.createElement("div",null,"It's CategoryManager")}}}]);

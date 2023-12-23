@@ -10,9 +10,9 @@ import Typography from "@mui/joy/Typography";
 import ArticleCard from "./ArticleCard";
 import Pagination from '@mui/material/Pagination';
 import {useParams} from "react-router-dom";
+import {pageSize} from "../../../../config";
 
-const ArticleCardList = () => {
-  const [page, setPage] = useState(1);
+const ArticleCardList = ({articles, page, setPage, totalCount}) => {
   const {categoryNo} = useParams();
   const handleChange = (event, value) => {
     setPage(value);
@@ -25,10 +25,10 @@ const ArticleCardList = () => {
   return (
     <>
       <Stack spacing={2} sx={{pt: 2}} alignItems="center">
-        {[1, 2, 3, 4, 5].map((article, idx) => (
-          <ArticleCard/>
+        {articles.map((article, idx) => (
+          <ArticleCard article={article}/>
         ))}
-        <Pagination count={10} page={page} onChange={handleChange}/>
+        <Pagination count={Math.ceil(totalCount / pageSize)} page={page} onChange={handleChange}/>
       </Stack>
     </>
   );

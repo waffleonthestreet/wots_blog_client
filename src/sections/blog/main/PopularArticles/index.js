@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
@@ -17,8 +17,20 @@ import {Stack} from "@mui/joy";
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import SmsIcon from '@mui/icons-material/Sms';
+import axios from "../../../../utils/axios";
 
 const PopularArticles = () => {
+    const [popularArticles, setPopularArticles] = useState([]);
+
+    const init = async() => {
+        const {data} = await axios.get('/blog/articles/popular?top=5');
+        setPopularArticles(data)
+    }
+
+    useEffect(() => {
+        init();
+    }, [])
+
   return (
     <>
       <h1>인기 있는 아티클</h1>
@@ -30,7 +42,7 @@ const PopularArticles = () => {
           gap: 2,
         }}
       >
-        {[1, 2, 3, 4].map((item, idx) => (
+        {popularArticles.map((article, idx) => (
           <Card sx={{maxWidth: '100%', boxShadow: 'lg'}}>
             <CardOverflow>
               <AspectRatio sx={{minWidth: 200}}>
@@ -55,7 +67,7 @@ const PopularArticles = () => {
                   textColor="text.primary"
                   overlay
                 >
-                  유용한 GitHub 전용 크롬 익스텐션 모음
+                    {article.articleTitle}
                 </Link>
 
 

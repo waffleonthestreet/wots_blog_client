@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
@@ -17,8 +17,23 @@ import {Stack} from "@mui/joy";
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import SmsIcon from '@mui/icons-material/Sms';
+import axios from "../../../../utils/axios";
+import {useNavigate} from "react-router-dom";
 
 const NewestArticles = () => {
+    const navigate = useNavigate();
+    const [latestArticles, setLatestArticles] = useState([]);
+
+    const init = async() => {
+        const {data} = await axios.get('/blog/articles/latest?top=5');
+        console.log(data);
+        setLatestArticles(data)
+    }
+
+    useEffect(() => {
+        init();
+    }, [])
+
   return (
     <>
       <h1>최신 아티클</h1>
@@ -30,8 +45,8 @@ const NewestArticles = () => {
           gap: 2,
         }}
       >
-        {[1, 2, 3, 4].map((item, idx) => (
-          <Card sx={{maxWidth: '100%', boxShadow: 'lg'}}>
+        {latestArticles.map((article, idx) => (
+          <Card sx={{maxWidth: '100%', boxShadow: 'lg'}} onClick={() => {navigate(`/article/${article.articleNo}`)}}>
             <CardOverflow>
               <AspectRatio sx={{minWidth: 200}}>
                 <img
@@ -49,13 +64,12 @@ const NewestArticles = () => {
                   <Typography level="body-xs">길거리와플</Typography>
                 </Stack>
                 <Link
-                  href="#product-card"
                   fontWeight="md"
                   color="neutral"
                   textColor="text.primary"
                   overlay
                 >
-                  유용한 GitHub 전용 크롬 익스텐션 모음
+                    {article.articleTitle}
                 </Link>
 
 

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[88],{8088:(e,n,t)=>{t.r(n),t.d(n,{default:()=>u});var r=t(7294);const u=function(){return r.createElement("div",null,"It's ArticleManager")}}}]);

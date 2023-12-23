@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import PropTypes from "prop-types";
 import AspectRatio from "@mui/joy/AspectRatio";
@@ -6,62 +7,100 @@ import CardContent from "@mui/joy/CardContent";
 import CardOverflow from "@mui/joy/CardOverflow";
 import Typography from "@mui/joy/Typography";
 import {Box, Stack} from "@mui/joy";
-import {lineColor} from "../../../../config";
+import {lineColor, primaryColor} from "../../../../config";
 
-const ArticleCard = () => {
+
+
+const ArticleCardItem = styled('div')({
+    backgroundColor: 'white',
+    border: `2px solid ${primaryColor}`,
+    width: '100%',
+    padding: '10px',
+    borderRadius: '10px'
+})
+
+const ArticleTitleSection = styled('div')({
+    color: primaryColor,
+    fontSize: '25px'
+})
+
+const ArticleContentsSection = styled('div')({
+    fontSize: '10px',
+})
+
+
+const ArticleCard = ({article}) => {
   return (
-    <Stack direction="row" sx={{paddingBottom: '10px'}}>
-      <Box
-        sx={{
-          width: {
-            xs: "100%",
-            sm: "100%",
-            md: "40%",
-            lg: "40%",
-            xl: "40%",
-          },
-          height: "260px",
-          border: `1px solid ${lineColor}`,
-          backgroundImage: "url('https://picsum.photos/600')",
-          // backgroundRepeat: "no-repeat",
-        }}></Box>
-      <Box
-        sx={{
-          width: {
-            xs: "100%",
-            sm: "100%",
-            md: "60%",
-            lg: "60%",
-            xl: "60%",
-          },
-          height: "260px",
-          border: `1px solid ${lineColor}`,
-        }}>
-        <Stack spacing={1} sx={{p: 3}}
-               direction="column"
-               justifyContent="space-between">
-          <Box sx={{height: '180px'}}>
-            <Typography
-              level="h4">
-              블로그 제목을 뭘로 할까나
-            </Typography>
-            <Typography level="body-md">
-              블로그 내용 이라네. 블로그 내용 이라네. 블로그 내용 이라네. 블로그
-              내용 이라네. 블로그 내용 이라네. 블로그 내용 이라네. 블로그 내용
-              블로그 내용 이라네. 블로그 내용 이라네. 블로그 내용 이라네. 블로그
-              내용 이라네. 블로그 내용 이라네. 블로그 내용 이라네. 블로그 내용
-            </Typography>
-          </Box>
-          <Box>
-            <Typography level="body-sm">
-              길거리와플 ∙ 2023.08.20
-            </Typography>
-          </Box>
-
-        </Stack>
-      </Box>
-    </Stack>
+    <ArticleCardItem>
+        <ArticleTitleSection>{article.articleTitle}</ArticleTitleSection>
+        <ArticleContentsSection>{article.articleContents}</ArticleContentsSection>
+    </ArticleCardItem>
   );
 };
 
 export default ArticleCard;
+*/
+
+import React from 'react';
+import PropTypes from 'prop-types'
+import ArticleThumbnailImage from '../../../../assets/article-item.jpg'
+import { styled } from '@mui/system';
+import {lineColor} from "../../../../config";
+import {Typography} from "@mui/joy";
+
+const ArticleCardItem = styled('div')({
+  display: 'flex',
+  width: '100%',
+  height: '260px',
+  border: `1px solid ${lineColor}`
+})
+
+const ArticleThumbnail = styled('div')({
+  width: '40%',
+  height: '100%',
+  overflow: 'hidden',
+  margin: '0 auto'
+})
+
+const ArticleContents = styled('div')({
+  width: '60%',
+  padding: '30px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between'
+})
+
+const ArticleTItleContents = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: '13px'
+})
+
+
+const ArticleCard = ({article}) => {
+  const handleClickAritlceTitle = () => {
+      alert(article.articleNo)
+  }
+
+  return (
+    <ArticleCardItem>
+      <ArticleThumbnail>
+        <img src={ArticleThumbnailImage} style={{width: '100%', height:'100%', objectFit: 'cover'}} />
+      </ArticleThumbnail>
+      <ArticleContents>
+       <ArticleTItleContents>
+         <Typography onClick={handleClickAritlceTitle} fontSize={23} fontWeight={900}>{article.articleTitle}</Typography>
+         <Typography fontSize={13}>{article.articleContents.replace(/<img .*?>/g,"").replace(/<[^>]*>?/gm, '')}</Typography>
+       </ArticleTItleContents>
+        <Typography fontSize={15}>길거리와플 ∙ {article.createDt}</Typography>
+      </ArticleContents>
+    </ArticleCardItem>
+  )
+}
+
+ArticleCard.propTypes = {
+  article: PropTypes.object
+}
+
+export default ArticleCard
+

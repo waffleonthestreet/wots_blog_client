@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[499],{2499:(e,n,t)=>{t.r(n),t.d(n,{default:()=>s});var r=t(7294);const s=function(){return r.createElement("div",null,"It's Dashboard")}}}]);
