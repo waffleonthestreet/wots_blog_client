@@ -57,7 +57,9 @@ export default function MainLayout(props) {
 				sx={{
 					width: "100%",
 					height: headerHeight,
-					backgroundImage: `url("https://picsum.photos/1920/300")`,
+					backgroundImage: `url("/FreshOranges.jpg")`,
+					backgroundSize: 'cover'
+					// backgroundImage: `url("https://picsum.photos/1920/300")`,
 				}}
 			/>
 			<Box

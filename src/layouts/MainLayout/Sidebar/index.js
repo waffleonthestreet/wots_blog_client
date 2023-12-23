@@ -16,13 +16,18 @@ import {drawerWidth, headerHeight} from "../../../config";
 import menuItems from "./menu-items";
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import MenuList from "./MenuList";
+import WaffleImage from '../../../../public/waffle.png'
 
 const Sidebar = ({container, mobileOpen, handleDrawerToggle}) => {
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     const drawer = (
         <div>
-            <Toolbar sx={{height: headerHeight}}/>
+            <Toolbar sx={{height: headerHeight, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection:'column'}}>
+                <img src={WaffleImage} width={"80%"}/>
+                <Typography level="title-lg">길거리와플</Typography>
+                <Typography level="body-md">margotscool@gmail.com</Typography>
+            </Toolbar>
             <Divider/>
             <PerfectScrollbar
                 component="div"

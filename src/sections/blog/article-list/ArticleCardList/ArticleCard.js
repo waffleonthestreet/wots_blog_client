@@ -43,10 +43,12 @@ export default ArticleCard;
 
 import React from 'react';
 import PropTypes from 'prop-types'
-import ArticleThumbnailImage from '../../../../assets/article-item.jpg'
+// import ArticleThumbnailImage from '../../../../assets/article-item.jpg'
+import ArticleThumbnailImage from '../../../../../public/OktoberfestPattern7.jpg'
 import { styled } from '@mui/system';
 import {lineColor} from "../../../../config";
 import {Typography} from "@mui/joy";
+import {Link} from "react-router-dom";
 
 const ArticleCardItem = styled('div')({
   display: 'flex',
@@ -78,9 +80,6 @@ const ArticleTItleContents = styled('div')({
 
 
 const ArticleCard = ({article}) => {
-  const handleClickAritlceTitle = () => {
-      alert(article.articleNo)
-  }
 
   return (
     <ArticleCardItem>
@@ -89,7 +88,7 @@ const ArticleCard = ({article}) => {
       </ArticleThumbnail>
       <ArticleContents>
        <ArticleTItleContents>
-         <Typography onClick={handleClickAritlceTitle} fontSize={23} fontWeight={900}>{article.articleTitle}</Typography>
+           <Typography fontSize={23} fontWeight={900}><Link to={`/article/${article.articleNo}`}>{article.articleTitle}</Link></Typography>
          <Typography fontSize={13}>{article.articleContents.replace(/<img .*?>/g,"").replace(/<[^>]*>?/gm, '')}</Typography>
        </ArticleTItleContents>
         <Typography fontSize={15}>길거리와플 ∙ {article.createDt}</Typography>
