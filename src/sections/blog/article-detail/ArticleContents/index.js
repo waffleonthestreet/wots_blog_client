@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 
 const ArticleContents = ({article}) => {
 	return (
-		<div>
+		<div className="ck-content">
 			{parse(article?.articleContents ?? '')}
 		</div>
 	);

@@ -58,7 +58,7 @@ const ArticleCardItem = styled('div')({
 })
 
 const ArticleThumbnail = styled('div')({
-  width: '40%',
+  minWidth: '40%',
   height: '100%',
   overflow: 'hidden',
   margin: '0 auto'
@@ -89,7 +89,7 @@ const ArticleCard = ({article}) => {
       <ArticleContents>
        <ArticleTItleContents>
            <Typography fontSize={23} fontWeight={900}><Link to={`/article/${article.articleNo}`}>{article.articleTitle}</Link></Typography>
-         <Typography fontSize={13}>{article.articleContents.replace(/<img .*?>/g,"").replace(/<[^>]*>?/gm, '')}</Typography>
+         <Typography fontSize={13} sx={{wordWrap: 'break-word', whiteSpace: 'pre-line'}}>{article.articleContents.replace(/<img .*?>/g,"").replace(/<[^>]*>?/gm, '')}</Typography>
        </ArticleTItleContents>
         <Typography fontSize={15}>길거리와플 ∙ {article.createDt}</Typography>
       </ArticleContents>

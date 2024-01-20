@@ -13,24 +13,29 @@ const ArticleList = () => {
   const [totalCount, setTotalCount] = useState(0);
   const {selectedItem} = useSelector((state) => state.menu);
   const [articles, setArticles] = useState([]);
+  const [keyword , setKeyword] = useState('');
 
 
-  const init = async() => {
-    const {data} = await axios.get(`/blog/articles?categoryNo=${selectedItem[0] ? selectedItem[0].id : 0}&page=${page}&pageSize=${pageSize}&keyword=`);
+  const init = async(searchKeyword) => {
+    const {data} = await axios.get(`/blog/articles?categoryNo=${selectedItem[0] ? selectedItem[0].id : 0}&page=${page}&pageSize=${pageSize}&keyword=${searchKeyword}`);
     setTotalCount(data.maxCnt);
     setArticles(data.data)
   }
 
   useEffect(() => {
-    init();
+    init(keyword);
   }, [selectedItem, page]);
+
+  useEffect(() => {
+    setKeyword('')
+  }, [selectedItem]);
 
   return (
     <>
       <Box sx={{width: "100%", height: "5px", backgroundColor: "black"}}/>
       <h1>ARTICLE LIST - {selectedItem[0].title}</h1>
       <Stack spacing={1}>
-        <SearchToolbar/>
+        <SearchToolbar keyword={keyword} setKeyword={setKeyword} initParent={init}/>
         <ArticleCardList articles={articles} page={page} setPage={setPage} totalCount={totalCount}/>
       </Stack>
     </>
