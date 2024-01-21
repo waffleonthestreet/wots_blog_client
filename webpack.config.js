@@ -22,7 +22,7 @@ module.exports = {
     hot: true,
     liveReload: true,
     historyApiFallback: true,
-    disableHostCheck: true,
+    allowedHosts: "all"
   },
   resolve: {
     extensions: [".js", ".jsx", ".json"],
