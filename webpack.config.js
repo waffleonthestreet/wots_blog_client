@@ -15,10 +15,8 @@ module.exports = {
   target: "web",
   devServer: {
     port: "5000",
-    static: {
-      directory: path.join(__dirname, "public"),
-    },
-    publicPath: "/dist/",
+    devMiddleware: { publicPath: "/dist/" },
+    static: { directory: path.resolve(__dirname) },
     open: true,
     hot: true,
     liveReload: true,
