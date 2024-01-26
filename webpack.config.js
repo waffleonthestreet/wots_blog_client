@@ -21,9 +21,7 @@ module.exports = {
     open: true,
     hot: true,
     liveReload: true,
-    historyApiFallback: {
-      index: '/index.html',
-    },
+    historyApiFallback: true,
     allowedHosts: "all"
   },
   resolve: {
