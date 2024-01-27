@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import { Outlet } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -29,6 +29,10 @@ export default function MainLayout(props) {
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
+
+	useEffect(() => {
+		console.log(`mobileOpen: ${mobileOpen}`);
+	}, [mobileOpen]);
 
 	const container =
 		window !== undefined ? () => window().document.body : undefined;
