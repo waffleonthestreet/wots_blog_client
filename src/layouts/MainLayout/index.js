@@ -13,6 +13,8 @@ import {
 } from "../../config";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 
 MainLayout.propTypes = {
 	/**
@@ -65,7 +67,17 @@ export default function MainLayout(props) {
 					backgroundSize: 'cover'
 					// backgroundImage: `url("https://picsum.photos/1920/300")`,
 				}}
-			/>
+			>
+				<IconButton
+					color="inherit"
+					aria-label="open drawer"
+					edge="start"
+					onClick={handleDrawerToggle}
+					sx={{ ml: 1, display: { sm: 'none' } }}
+				>
+					<MenuIcon />
+				</IconButton>
+			</Box>
 			<Box
 				sx={{
 					pt: `${outletPadding + 35}px`,
